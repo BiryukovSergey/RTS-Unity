@@ -1,7 +1,10 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Abstractions;
 
+namespace UserControlSystem
+{
 
     public class BottomLefPresenter : MonoBehaviour
     {
@@ -11,34 +14,36 @@ using UnityEngine.UI;
         [SerializeField] private Image _sliderBackground;
         [SerializeField] private Image _sliderFillImage;
         [SerializeField] private SelectableValue _selectedValue;
-
-        [Header("Illumination")]
-        
-        [SerializeField] private SpriteRenderer _spriteIllumination;
-
-       private void Start()
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+   
+        private void Start()
         {
             _selectedValue.OnSelected += onSelected;
             onSelected(_selectedValue.CurrentValue);
         }
-        private void onSelected(ISelecatable selected)
+
+        private void onSelected(ISelectable selected)
         {
             _selectedImage.enabled = selected != null;
             _healthSlider.gameObject.SetActive(selected != null);
-            _text.enabled = selected != null;
-            _spriteIllumination.enabled = false;
+            _text.enabled = selected != null; 
+            _spriteRenderer.enabled = false;
+            
             if (selected != null)
             {
+                Debug.Log(selected);
+                _spriteRenderer.transform.position = selected.PositionIllusion;
+                _spriteRenderer.enabled = true;
                 _selectedImage.sprite = selected.Icon;
-                _spriteIllumination.enabled = true;
                 _text.text = $"{selected.Health}/{selected.MaxHealth}";
                 _healthSlider.minValue = 0;
                 _healthSlider.maxValue = selected.MaxHealth;
                 _healthSlider.value = selected.Health;
                 var color = Color.Lerp(Color.red, Color.green, selected.Health /
-                                                               (float)selected.MaxHealth);
+                                                               (float) selected.MaxHealth);
                 _sliderBackground.color = color * 0.5f;
                 _sliderFillImage.color = color;
             }
         }
     }
+}
