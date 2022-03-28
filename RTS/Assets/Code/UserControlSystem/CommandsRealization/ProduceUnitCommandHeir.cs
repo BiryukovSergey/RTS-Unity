@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UserControlSystem.CommandsRealization
 {
-    public class ProduceUnitCommandHeir : IProduceUnitCommand
+    public class ProduceUnitCommandHeir : ProduceUnitCommand
     {
         public GameObject UnitPrefab { get; }
     }

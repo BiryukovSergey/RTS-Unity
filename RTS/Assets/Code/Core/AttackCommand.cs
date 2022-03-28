@@ -1,5 +1,6 @@
 ﻿using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
+using UnityEngine;
 
 namespace Code.Core
 {
@@ -7,7 +8,7 @@ namespace Code.Core
     {
         public override void ExecuteSpecificCommand(IAttackCommand command)
         {
-            
+            Debug.Log("Attack");
         }
     }
 }

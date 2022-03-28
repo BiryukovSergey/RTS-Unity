@@ -6,6 +6,7 @@ using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
 using UserControlSystem.CommandsRealization;
 using UserControlSystem.UI.View;
+using Code.Core;
 
 namespace UserControlSystem.UI.Presenter
 {
@@ -48,31 +49,31 @@ namespace UserControlSystem.UI.Presenter
             var unitProducer = commandExecutor as CommandExecutorBase<IProduceUnitCommand>;
             if (unitProducer != null)
             {
-                unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommand()));
+                unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommandHeir()));
                 return;
             }
             var attackCommand = commandExecutor as CommandExecutorBase<IAttackCommand>;
             if (attackCommand != null)
             {
-                Debug.Log("Attack");
+                attackCommand.ExecuteSpecificCommand(_context.Inject(new AttackCommand()));
                 return;
             }
             var moveCommand = commandExecutor as CommandExecutorBase<IMoveCommand>;
             if (moveCommand != null)
             {
-                Debug.Log("Move");
+                moveCommand.ExecuteSpecificCommand(_context.Inject(new MoveCommand()));
                 return;
             }
             var stopCommand = commandExecutor as CommandExecutorBase<IStopCommand>;
             if (stopCommand != null)
             {
-                Debug.Log("Stop");
+                stopCommand.ExecuteSpecificCommand(_context.Inject(new StopCommand()));
                 return;
             }
             var patrolCommand = commandExecutor as CommandExecutorBase<IPatrolCommand>;
             if (patrolCommand != null)
             {
-                Debug.Log("Patrol");
+                patrolCommand.ExecuteSpecificCommand(_context.Inject(new PatrolCommand()));
                 return;
             }
             throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(ONButtonClick)}: " +
