@@ -1,6 +1,6 @@
 ﻿namespace Abstractions.Commands
 {
-    public interface IAttackable
+    public interface IAttackable : IHealthHolder
     {
         
     }

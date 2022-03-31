@@ -9,6 +9,7 @@ namespace UserControlSystem.CommandCreators
     public class MoveCommandCommandCreator : CommandCreatorBase<IMoveCommand>
     {
         [Inject] private AssetsContext _context;
+        
         private Action<IMoveCommand> _creationCallback;
 
         [Inject]
