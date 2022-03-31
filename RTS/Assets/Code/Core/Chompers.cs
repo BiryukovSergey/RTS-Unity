@@ -2,9 +2,8 @@ using Abstractions;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class Chompers : CommandExecutorBase<IAttackCommand>,ISelectable
+public class Chompers : CommandExecutorBase<IAttackCommand>,ISelecatable
 {
     [SerializeField] private float _maxHealth = 250;
     [SerializeField] private Sprite _icon;

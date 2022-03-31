@@ -3,7 +3,7 @@ using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
 
-public sealed class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
+public sealed class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatable
 {
     [SerializeField] private Transform _unitsParent;
     [SerializeField] private float _maxHealth = 1000;
