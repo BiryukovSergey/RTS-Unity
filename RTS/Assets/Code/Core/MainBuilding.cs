@@ -19,7 +19,6 @@ public sealed class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISe
 
     public Transform PivotPoint => _pivotPoint;
 
-
     public override void ExecuteSpecificCommand(IProduceUnitCommand command) 
         => Instantiate(command.UnitPrefab, 
             new Vector3(Random.Range(-10, 10), 0.2f, Random.Range(-10, 10)), 

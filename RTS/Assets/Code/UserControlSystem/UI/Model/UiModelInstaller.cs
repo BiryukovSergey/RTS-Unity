@@ -8,14 +8,14 @@ namespace UserControlSystem
     public class UiModelInstaller : MonoInstaller
     {
         [SerializeField] private AssetsContext _legacyContext;
-        [SerializeField] private Vector3Value _vector3ValueContext;
+        [SerializeField] private Vector3Value _groundClicksRMB;
         [SerializeField] private AttackableValue _attackableValue;
         [SerializeField] private SelectableValue _selectable;
         
         public override void InstallBindings()
         {
             Container.Bind<AssetsContext>().FromInstance(_legacyContext);
-            Container.Bind<Vector3Value>().FromInstance(_vector3ValueContext);
+            Container.Bind<Vector3Value>().FromInstance(_groundClicksRMB);
             Container.Bind<AttackableValue>().FromInstance(_attackableValue);
             Container.Bind<SelectableValue>().FromInstance(_selectable);
             
